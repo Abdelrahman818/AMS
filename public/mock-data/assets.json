@@ -1,0 +1,135 @@
+{
+  "success": true,
+  "data": [
+    {
+      "id": "asset-1",
+      "code": "AST-000184",
+      "name": "حاسب مكتبي Dell OptiPlex 7010",
+      "category": "أجهزة الحاسب الآلي",
+      "department": "تقنية المعلومات",
+      "location": "المبنى الرئيسي · الطابق الثاني",
+      "custodian": "أحمد محمود",
+      "status": "نشط",
+      "serialNumber": "DL-OPT-7A1038",
+      "updatedAt": "13 نوفمبر 2026",
+      "icon": "grid",
+      "iconTone": "blue",
+      "history": [
+        { "id": "asset-1-event-1", "title": "تم تسجيل الأصل", "description": "تمت إضافة الأصل إلى سجل تقنية المعلومات.", "date": "13 نوفمبر 2026", "actor": "محمد عبدالله", "icon": "plus" }
+      ]
+    },
+    {
+      "id": "asset-2",
+      "code": "AST-000172",
+      "name": "طقم أثاث استقبال",
+      "category": "أثاث مكتبي",
+      "department": "متعدد الإدارات",
+      "location": "موزع على إدارتين",
+      "custodian": "عهدة موزعة",
+      "status": "نشط",
+      "serialNumber": "",
+      "updatedAt": "12 نوفمبر 2026",
+      "distributed": true,
+      "icon": "layers",
+      "iconTone": "purple",
+      "custodies": [
+        { "department": "الشؤون الإدارية", "employee": "سارة أحمد", "description": "مكتب الاستقبال", "isPrimary": true },
+        { "department": "خدمة العملاء", "employee": "عهدة إدارية", "description": "طقم الجلوس", "isPrimary": false }
+      ],
+      "history": [
+        { "id": "asset-2-event-1", "title": "تم إنشاء العهدة الموزعة", "description": "تم تسجيل الأجزاء على الشؤون الإدارية وخدمة العملاء.", "date": "12 نوفمبر 2026", "actor": "محمد عبدالله", "icon": "layers" }
+      ]
+    },
+    {
+      "id": "asset-3",
+      "code": "AST-000161",
+      "name": "سيارة تويوتا كورولا 2022",
+      "category": "مركبات",
+      "department": "الخدمات العامة",
+      "location": "موقف المبنى الرئيسي",
+      "custodian": "خالد علي",
+      "status": "نشط",
+      "serialNumber": "JTDBR32E220184",
+      "updatedAt": "12 نوفمبر 2026",
+      "isVehicle": true,
+      "plateNumber": "أ ب ج 4567",
+      "chassisNumber": "JTDBR32E220184",
+      "engineNumber": "2ZR-FAE-78432",
+      "icon": "arrows",
+      "iconTone": "green",
+      "history": [
+        { "id": "asset-3-event-1", "title": "تم تسجيل المركبة", "description": "تمت إضافة بيانات المركبة إلى سجل الأصول.", "date": "12 نوفمبر 2026", "actor": "محمد عبدالله", "icon": "plus" }
+      ]
+    },
+    {
+      "id": "asset-4",
+      "code": "AST-000149",
+      "name": "طابعة HP LaserJet Pro M404",
+      "category": "أجهزة الحاسب الآلي",
+      "department": "الموارد البشرية",
+      "location": "المبنى الرئيسي · الطابق الأول",
+      "custodian": "مريم حسن",
+      "status": "تحت الصيانة",
+      "serialNumber": "HP-M404-90872",
+      "updatedAt": "11 نوفمبر 2026",
+      "icon": "grid",
+      "iconTone": "orange"
+    },
+    {
+      "id": "asset-5",
+      "code": "AST-000132",
+      "name": "خزانة ملفات معدنية",
+      "category": "أثاث مكتبي",
+      "department": "الشؤون المالية",
+      "location": "مبنى الإدارة · الطابق الثالث",
+      "custodian": "عهدة إدارية",
+      "status": "نشط",
+      "serialNumber": "",
+      "updatedAt": "10 نوفمبر 2026",
+      "icon": "archive",
+      "iconTone": "purple"
+    },
+    {
+      "id": "asset-6",
+      "code": "AST-000118",
+      "name": "جهاز عرض Epson EB-X51",
+      "category": "أجهزة كهربائية",
+      "department": "التدريب والتطوير",
+      "location": "قاعة التدريب الكبرى",
+      "custodian": "ياسر سمير",
+      "status": "مخزن",
+      "serialNumber": "EP-EBX51-6621",
+      "updatedAt": "9 نوفمبر 2026",
+      "icon": "box",
+      "iconTone": "blue"
+    },
+    {
+      "id": "asset-7",
+      "code": "AST-000096",
+      "name": "وحدة تكييف Carrier 3 حصان",
+      "category": "أجهزة كهربائية",
+      "department": "المشتريات",
+      "location": "المبنى الفرعي · الطابق الأرضي",
+      "custodian": "عمر إبراهيم",
+      "status": "مفقود",
+      "serialNumber": "CR-AC-89321",
+      "updatedAt": "8 نوفمبر 2026",
+      "icon": "settings",
+      "iconTone": "orange"
+    },
+    {
+      "id": "asset-8",
+      "code": "AST-000087",
+      "name": "حاسب محمول Lenovo ThinkPad E14",
+      "category": "أجهزة الحاسب الآلي",
+      "department": "تقنية المعلومات",
+      "location": "المبنى الرئيسي · الطابق الثاني",
+      "custodian": "نور الدين مصطفى",
+      "status": "نشط",
+      "serialNumber": "LN-E14-23087",
+      "updatedAt": "7 نوفمبر 2026",
+      "icon": "grid",
+      "iconTone": "blue"
+    }
+  ]
+}

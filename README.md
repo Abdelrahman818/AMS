@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Asset Management Frontend
 
-## Getting Started
+Arabic, RTL-first Next.js frontend for the BH-AEP asset management system.
 
-First, run the development server:
+## Run locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Data sources
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The dashboard, asset register, and workspace modules load their demo records from:
 
-## Learn More
+- `public/mock-data/dashboard.json`
+- `public/mock-data/assets.json`
+- `public/mock-data/modules.json`
 
-To learn more about Next.js, take a look at the following resources:
+Edit these JSON files to change the sample data; the UI does not embed demo records. Without an API URL, the asset register reads the JSON file. To connect it to an API, set `NEXT_PUBLIC_API_BASE_URL` in `.env.local`; the frontend requests `GET /api/v1/assets` and accepts a raw array, an array in `data`, or a paginated `data.items` / `data.assets` response. If that request fails or returns no usable data, the register falls back to the JSON sample and displays a notice. Dashboard metrics remain mock data until a dashboard API is available.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Asset detail, add, and edit screens are available in the prototype. Detail tabs include custody (including distributed custody), asset history, attachments placeholders, and vehicle history. Add/edit validates required fields and requires a reason when an existing vehicle's plate or engine number changes. These screens use in-session state only; new records and edits are not saved to the API or JSON files. Custody actions, file uploads, and QR generation remain placeholders until their services are available. CSV export works in the browser.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Available screens
 
-## Deploy on Vercel
+The prototype includes an admin-style dashboard, a searchable and filterable asset register, dedicated asset detail and add/edit screens, and module screens for custody and transfers, inventory, scrap requests, accessories, reports, notifications, employees and departments, and system administration. Module screens include mock tables, tabs, filters, and session-only actions where applicable. These are frontend demonstrations, not complete business workflows: authentication, permissions, file processing, backups/restores, and API persistence are not implemented.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Screen navigation is currently state-based within the main shell rather than URL routes. Data and interactions are demo-only; changes reset when the page session ends.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The interface uses a muted, low-glare palette, a system Arabic-friendly font stack, and larger text for comfortable reading. The light/dark theme toggle remains available. Numeric values use Western digits (for example, `5423`) without thousands separators; Arabic labels and RTL layout are retained.
+
+## Checks
+
+```bash
+npm run lint
+npm run build
+```

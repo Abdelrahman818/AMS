@@ -1,0 +1,44 @@
+{
+  "summary": {
+    "totalAssets": 2486,
+    "totalChange": "+12.8%",
+    "activeAssets": 2142,
+    "activeChange": "+8.2%",
+    "assignedAssets": 1876,
+    "assignedChange": "+5.4%",
+    "needsAttention": 24
+  },
+  "statuses": [
+    { "name": "نشط", "count": 2142, "percentage": 86.2, "color": "#2fb88a" },
+    { "name": "مخزن", "count": 194, "percentage": 7.8, "color": "#5396f5" },
+    { "name": "تحت الصيانة", "count": 102, "percentage": 4.1, "color": "#f0ac48" },
+    { "name": "مُعلَّق", "count": 48, "percentage": 1.9, "color": "#a7b2c2" }
+  ],
+  "categories": [
+    { "name": "أجهزة الحاسب الآلي", "count": 684, "percentage": 28, "icon": "grid" },
+    { "name": "أثاث مكتبي", "count": 552, "percentage": 22, "icon": "layers" },
+    { "name": "أجهزة كهربائية", "count": 428, "percentage": 17, "icon": "settings" },
+    { "name": "معدات وأدوات", "count": 376, "percentage": 15, "icon": "box" },
+    { "name": "مركبات", "count": 296, "percentage": 12, "icon": "arrows" }
+  ],
+  "activity": [
+    { "label": "الأحد", "additions": 8, "transfers": 5 },
+    { "label": "الإثنين", "additions": 12, "transfers": 7 },
+    { "label": "الثلاثاء", "additions": 7, "transfers": 10 },
+    { "label": "الأربعاء", "additions": 16, "transfers": 9 },
+    { "label": "الخميس", "additions": 11, "transfers": 14 },
+    { "label": "الجمعة", "additions": 4, "transfers": 5 },
+    { "label": "السبت", "additions": 9, "transfers": 7 }
+  ],
+  "recentActivity": [
+    { "id": "activity-1", "title": "تمت إضافة أصل جديد", "description": "حاسب محمول Lenovo ThinkPad · AST-002487", "actor": "محمد عبدالله", "time": "منذ 15 دقيقة", "icon": "plus", "tone": "blue" },
+    { "id": "activity-2", "title": "تم نقل عهدة أصل", "description": "طابعة HP LaserJet · من تقنية المعلومات إلى الموارد البشرية", "actor": "سارة أحمد", "time": "منذ ساعة", "icon": "arrows", "tone": "purple" },
+    { "id": "activity-3", "title": "تم تحديث بيانات أصل", "description": "سيارة تويوتا كورولا · تحديث بيانات المركبة", "actor": "محمد عبدالله", "time": "منذ 3 ساعات", "icon": "settings", "tone": "orange" },
+    { "id": "activity-4", "title": "تم إكمال جرد إدارة", "description": "إدارة الشؤون الإدارية · 48 أصلًا", "actor": "خالد علي", "time": "أمس", "icon": "check", "tone": "green" }
+  ],
+  "alerts": [
+    { "id": "alert-1", "title": "بيانات أصل غير مكتملة", "description": "3 أصول تحتاج إلى مراجعة البيانات", "tone": "orange" },
+    { "id": "alert-2", "title": "موعد حملة الجرد يقترب", "description": "حملة جرد إدارة تقنية المعلومات", "tone": "blue" },
+    { "id": "alert-3", "title": "رخصة مركبة قاربت على الانتهاء", "description": "مركبة AST-000219 · خلال 14 يومًا", "tone": "red" }
+  ]
+}

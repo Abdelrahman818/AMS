@@ -1,0 +1,430 @@
+{
+  "custody": {
+    "title": "العهد والنقل",
+    "eyebrow": "إدارة الأصول",
+    "description": "متابعة العهد الحالية وطلبات النقل والإرجاع بين الإدارات.",
+    "icon": "arrows",
+    "actionLabel": "طلب نقل",
+    "stats": [
+      { "label": "عهد نشطة", "value": "1876", "tone": "blue", "icon": "users" },
+      { "label": "طلبات بانتظار الإجراء", "value": "12", "tone": "orange", "icon": "clock" },
+      { "label": "عمليات هذا الشهر", "value": "84", "tone": "green", "icon": "arrows" }
+    ],
+    "tabs": [
+      { "id": "current", "label": "العهد الحالية" },
+      { "id": "transfers", "label": "طلبات النقل" },
+      { "id": "bulk", "label": "النقل الجماعي" },
+      { "id": "returns", "label": "إرجاع للمخزن" },
+      { "id": "history", "label": "السجل التاريخي" }
+    ],
+    "datasets": {
+      "current": {
+        "columns": [{ "key": "asset", "label": "الأصل" }, { "key": "department", "label": "الإدارة" }, { "key": "custodian", "label": "المسؤول" }, { "key": "assignedAt", "label": "تاريخ التسليم" }, { "key": "status", "label": "الحالة", "type": "status" }],
+        "rows": [
+          { "id": "c-1", "asset": "حاسب مكتبي Dell OptiPlex 7010", "department": "تقنية المعلومات", "custodian": "أحمد محمود", "assignedAt": "13 نوفمبر 2026", "status": "نشط" },
+          { "id": "c-2", "asset": "سيارة تويوتا كورولا 2022", "department": "الخدمات العامة", "custodian": "خالد علي", "assignedAt": "12 نوفمبر 2026", "status": "نشط" },
+          { "id": "c-3", "asset": "طقم أثاث استقبال", "department": "متعدد الإدارات", "custodian": "عهدة موزعة", "assignedAt": "12 نوفمبر 2026", "status": "موزعة" }
+        ],
+        "rowActionLabel": "عرض العهدة",
+        "rowActionMessage": "تفاصيل العهدة متاحة للعرض التجريبي فقط."
+      },
+      "transfers": {
+        "columns": [{ "key": "asset", "label": "الأصل" }, { "key": "from", "label": "من" }, { "key": "to", "label": "إلى" }, { "key": "requestedBy", "label": "مقدم الطلب" }, { "key": "status", "label": "الحالة", "type": "status" }],
+        "rows": [
+          { "id": "t-1", "asset": "طابعة HP LaserJet Pro M404", "from": "تقنية المعلومات", "to": "الموارد البشرية", "requestedBy": "مريم حسن", "status": "بانتظار الموافقة" },
+          { "id": "t-2", "asset": "جهاز عرض Epson EB-X51", "from": "المخزن", "to": "التدريب والتطوير", "requestedBy": "ياسر سمير", "status": "قيد المراجعة" }
+        ],
+        "rowActionLabel": "تأكيد النقل",
+        "rowActionStatus": "مكتمل",
+        "rowActionMessage": "تم تحديث حالة طلب النقل في الجلسة التجريبية.",
+        "formFields": [
+          { "name": "asset", "label": "الأصل", "type": "text", "required": true, "placeholder": "ابحث عن الأصل أو أدخل كوده" },
+          { "name": "from", "label": "الإدارة الحالية", "type": "text", "required": true },
+          { "name": "to", "label": "الإدارة المستقبلة", "type": "text", "required": true },
+          { "name": "reason", "label": "سبب النقل", "type": "textarea", "required": true }
+        ]
+      },
+      "bulk": {
+        "columns": [{ "key": "reference", "label": "رقم الطلب" }, { "key": "scope", "label": "النطاق" }, { "key": "assets", "label": "عدد الأصول" }, { "key": "createdAt", "label": "تاريخ الإنشاء" }, { "key": "status", "label": "الحالة", "type": "status" }],
+        "rows": [
+          { "id": "b-1", "reference": "BTR-026", "scope": "تقنية المعلومات ← الإدارة المالية", "assets": "6 أصول", "createdAt": "10 نوفمبر 2026", "status": "بانتظار الموافقة" },
+          { "id": "b-2", "reference": "BTR-025", "scope": "المخزن ← التدريب والتطوير", "assets": "3 أصول", "createdAt": "8 نوفمبر 2026", "status": "مكتمل" }
+        ],
+        "rowActionLabel": "مراجعة الطلب",
+        "rowActionMessage": "مراجعة النقل الجماعي تجريبية ولا تُنفّذ نقلًا فعليًا.",
+        "formFields": [
+          { "name": "scope", "label": "نطاق النقل", "type": "text", "required": true, "placeholder": "الإدارة أو الموقع المصدر" },
+          { "name": "destination", "label": "الوجهة", "type": "text", "required": true },
+          { "name": "assets", "label": "الأصول", "type": "textarea", "required": true, "placeholder": "أدخل أكواد الأصول، كل كود في سطر" }
+        ]
+      },
+      "returns": {
+        "columns": [{ "key": "asset", "label": "الأصل" }, { "key": "department", "label": "الإدارة" }, { "key": "returnedBy", "label": "مقدم الطلب" }, { "key": "returnDate", "label": "تاريخ الإرجاع" }, { "key": "status", "label": "الحالة", "type": "status" }],
+        "rows": [
+          { "id": "r-1", "asset": "جهاز عرض Epson EB-X51", "department": "التدريب والتطوير", "returnedBy": "ياسر سمير", "returnDate": "9 نوفمبر 2026", "status": "قيد المراجعة" }
+        ],
+        "rowActionLabel": "استلام للمخزن",
+        "rowActionStatus": "مكتمل",
+        "rowActionMessage": "تم تسجيل الاستلام في سجل الجلسة التجريبية.",
+        "formFields": [
+          { "name": "asset", "label": "الأصل", "type": "text", "required": true },
+          { "name": "returnedBy", "label": "مقدم الإرجاع", "type": "text", "required": true },
+          { "name": "reason", "label": "حالة الأصل وملاحظات الإرجاع", "type": "textarea" }
+        ]
+      },
+      "history": {
+        "columns": [{ "key": "asset", "label": "الأصل" }, { "key": "operation", "label": "العملية" }, { "key": "actor", "label": "منفذ العملية" }, { "key": "date", "label": "التاريخ" }, { "key": "status", "label": "النتيجة", "type": "status" }],
+        "rows": [
+          { "id": "h-1", "asset": "حاسب محمول Lenovo ThinkPad E14", "operation": "نقل عهدة", "actor": "محمد عبدالله", "date": "7 نوفمبر 2026", "status": "مكتمل" },
+          { "id": "h-2", "asset": "خزانة ملفات معدنية", "operation": "إرجاع للمخزن", "actor": "سارة أحمد", "date": "5 نوفمبر 2026", "status": "مكتمل" }
+        ],
+        "rowActionLabel": "عرض السجل",
+        "rowActionMessage": "سجل العمليات للقراءة فقط."
+      }
+    }
+  },
+  "inventory": {
+    "title": "إدارة حملات الجرد",
+    "eyebrow": "التحقق من الأصول",
+    "description": "أنشئ حملة جرد وتابع مطابقة الأصول حسب الإدارة والموقع.",
+    "icon": "scan",
+    "actionLabel": "إنشاء حملة",
+    "stats": [
+      { "label": "حملات نشطة", "value": "2", "tone": "blue", "icon": "scan" },
+      { "label": "أصول تم التحقق منها", "value": "386", "tone": "green", "icon": "check" },
+      { "label": "فروقات للمراجعة", "value": "17", "tone": "orange", "icon": "bell" }
+    ],
+    "tabs": [{ "id": "campaigns", "label": "الحملات" }, { "id": "history", "label": "السجل التاريخي" }],
+    "datasets": {
+      "campaigns": {
+        "columns": [{ "key": "name", "label": "الحملة" }, { "key": "scope", "label": "النطاق" }, { "key": "progress", "label": "الإنجاز" }, { "key": "period", "label": "الفترة" }, { "key": "status", "label": "الحالة", "type": "status" }],
+        "rows": [
+          { "id": "i-1", "name": "جرد المقر الرئيسي 2026", "scope": "المبنى الرئيسي", "progress": "78% · 312 / 400", "period": "1–20 نوفمبر", "status": "قيد التنفيذ" },
+          { "id": "i-2", "name": "جرد الإدارة المالية", "scope": "الشؤون المالية", "progress": "42% · 74 / 176", "period": "5–25 نوفمبر", "status": "قيد التنفيذ" }
+        ],
+        "rowActionLabel": "فتح الحملة",
+        "rowActionMessage": "تفاصيل التحقق بالكاميرا ستتوفر بعد ربط خدمة الجرد.",
+        "formFields": [
+          { "name": "name", "label": "اسم الحملة", "type": "text", "required": true },
+          { "name": "scope", "label": "نطاق الحملة", "type": "select", "required": true, "options": ["كل الأصول", "الإدارة", "الموقع"] },
+          { "name": "target", "label": "الإدارة أو الموقع", "type": "text" },
+          { "name": "period", "label": "تاريخ البدء", "type": "date", "required": true }
+        ]
+      },
+      "history": {
+        "columns": [{ "key": "name", "label": "الحملة" }, { "key": "scope", "label": "النطاق" }, { "key": "reconciled", "label": "نتيجة المطابقة" }, { "key": "finalizedAt", "label": "تاريخ الإقفال" }, { "key": "status", "label": "الحالة", "type": "status" }],
+        "rows": [
+          { "id": "ih-1", "name": "جرد مخازن أكتوبر", "scope": "المخازن", "reconciled": "187 أصلًا · 4 فروقات", "finalizedAt": "31 أكتوبر 2026", "status": "مكتمل" }
+        ],
+        "rowActionLabel": "عرض النتائج",
+        "rowActionMessage": "التقرير التاريخي متاح للعرض التجريبي."
+      }
+    }
+  },
+  "scrap": {
+    "title": "طلبات التخريد",
+    "eyebrow": "نهاية دورة الأصل",
+    "description": "راجع طلبات التخريد ومبرراتها قبل اعتماد الإجراء.",
+    "icon": "archive",
+    "actionLabel": "طلب تخريد",
+    "stats": [
+      { "label": "طلبات قيد المراجعة", "value": "6", "tone": "orange", "icon": "clock" },
+      { "label": "تم تخريده هذا العام", "value": "23", "tone": "blue", "icon": "archive" },
+      { "label": "مرفقات مطلوبة", "value": "3", "tone": "purple", "icon": "layers" }
+    ],
+    "tabs": [{ "id": "requests", "label": "الطلبات الحالية" }, { "id": "history", "label": "السجل التاريخي" }],
+    "datasets": {
+      "requests": {
+        "columns": [{ "key": "asset", "label": "الأصل" }, { "key": "department", "label": "الإدارة" }, { "key": "reason", "label": "المبرر" }, { "key": "requestedBy", "label": "مقدم الطلب" }, { "key": "status", "label": "الحالة", "type": "status" }],
+        "rows": [
+          { "id": "s-1", "asset": "وحدة تكييف Carrier 3 حصان", "department": "المشتريات", "reason": "تعطل متكرر وتكلفة إصلاح مرتفعة", "requestedBy": "عمر إبراهيم", "status": "بانتظار الاعتماد" },
+          { "id": "s-2", "asset": "طابعة مكتبية قديمة", "department": "الموارد البشرية", "reason": "نهاية العمر التشغيلي", "requestedBy": "مريم حسن", "status": "تحت المراجعة" }
+        ],
+        "rowActionLabel": "مراجعة الطلب",
+        "rowActionMessage": "اعتماد التخريد يتطلب صلاحية مدير النظام.",
+        "formFields": [
+          { "name": "asset", "label": "الأصل", "type": "text", "required": true },
+          { "name": "reason", "label": "مبرر التخريد", "type": "textarea", "required": true },
+          { "name": "condition", "label": "حالة الأصل", "type": "select", "required": true, "options": ["غير صالح للاستخدام", "تكلفة إصلاح مرتفعة", "نهاية العمر التشغيلي"] }
+        ]
+      },
+      "history": {
+        "columns": [{ "key": "asset", "label": "الأصل" }, { "key": "decision", "label": "القرار" }, { "key": "approvedBy", "label": "المعتمد" }, { "key": "date", "label": "التاريخ" }, { "key": "status", "label": "الحالة", "type": "status" }],
+        "rows": [
+          { "id": "sh-1", "asset": "ماسح ضوئي Canon DR-C225", "decision": "تم التخريد", "approvedBy": "محمد عبدالله", "date": "18 أكتوبر 2026", "status": "مكتمل" }
+        ],
+        "rowActionLabel": "عرض التفاصيل",
+        "rowActionMessage": "سجل التخريد محفوظ للعرض في النموذج التجريبي."
+      }
+    }
+  },
+  "accessories": {
+    "title": "مكتبة المشتملات",
+    "eyebrow": "مكونات الأصول",
+    "description": "استعرض القطع والمشتملات المسجلة والمرتبطة بالأصول.",
+    "icon": "layers",
+    "actionLabel": "إضافة مشتمل",
+    "stats": [
+      { "label": "إجمالي المشتملات", "value": "124", "tone": "blue", "icon": "layers" },
+      { "label": "مرتبطة بأصل", "value": "98", "tone": "green", "icon": "box" },
+      { "label": "غير مرتبطة", "value": "26", "tone": "orange", "icon": "archive" }
+    ],
+    "tabs": [{ "id": "library", "label": "كل المشتملات" }],
+    "datasets": {
+      "library": {
+        "columns": [{ "key": "name", "label": "المشتمل" }, { "key": "asset", "label": "الأصل المرتبط" }, { "key": "code", "label": "الكود" }, { "key": "location", "label": "الموقع" }, { "key": "status", "label": "الحالة", "type": "status" }],
+        "rows": [
+          { "id": "a-1", "name": "شاحن USB-C أصلي", "asset": "حاسب محمول Lenovo ThinkPad E14", "code": "ACC-00124", "location": "تقنية المعلومات · الدور الثاني", "status": "مرتبط" },
+          { "id": "a-2", "name": "حقيبة حمل", "asset": "حاسب محمول Lenovo ThinkPad E14", "code": "ACC-00123", "location": "تقنية المعلومات · الدور الثاني", "status": "مرتبط" },
+          { "id": "a-3", "name": "كابل HDMI بطول 5م", "asset": "غير مرتبط", "code": "ACC-00122", "location": "المخزن الرئيسي", "status": "متاح" }
+        ],
+        "rowActionLabel": "عرض المشتمل",
+        "rowActionMessage": "إدارة المرفقات والتسليم ستتاح بعد ربط واجهة API.",
+        "formFields": [
+          { "name": "name", "label": "اسم المشتمل", "type": "text", "required": true },
+          { "name": "asset", "label": "الأصل المرتبط", "type": "text", "placeholder": "اختياري" },
+          { "name": "location", "label": "الموقع", "type": "text", "required": true },
+          { "name": "notes", "label": "ملاحظات", "type": "textarea" }
+        ]
+      }
+    }
+  },
+  "reports": {
+    "title": "التقارير",
+    "eyebrow": "التحليلات والتصدير",
+    "description": "أنشئ معاينة لتقارير الأصول والجرد والعهدة حسب نطاق محدد.",
+    "icon": "chart",
+    "actionLabel": "تصدير CSV",
+    "stats": [
+      { "label": "تقارير محفوظة", "value": "4", "tone": "blue", "icon": "chart" },
+      { "label": "تقارير هذا الشهر", "value": "18", "tone": "green", "icon": "clock" },
+      { "label": "تقارير مجدولة", "value": "2", "tone": "purple", "icon": "settings" }
+    ],
+    "tabs": [{ "id": "builder", "label": "مصمم التقارير" }, { "id": "saved", "label": "التقارير المحفوظة" }],
+    "datasets": {
+      "builder": {
+        "columns": [{ "key": "asset", "label": "الأصل" }, { "key": "department", "label": "الإدارة" }, { "key": "category", "label": "الفئة" }, { "key": "status", "label": "الحالة", "type": "status" }, { "key": "location", "label": "الموقع" }],
+        "rows": [
+          { "id": "rp-1", "asset": "حاسب مكتبي Dell OptiPlex 7010", "department": "تقنية المعلومات", "category": "أجهزة الحاسب الآلي", "status": "نشط", "location": "المبنى الرئيسي · الطابق الثاني" },
+          { "id": "rp-2", "asset": "سيارة تويوتا كورولا 2022", "department": "الخدمات العامة", "category": "مركبات", "status": "نشط", "location": "موقف المبنى الرئيسي" }
+        ],
+        "rowActionLabel": "عرض الأصل",
+        "rowActionMessage": "معاينة البيانات تجريبية؛ التصدير يعتمد على البيانات الظاهرة."
+      },
+      "saved": {
+        "columns": [{ "key": "name", "label": "اسم التقرير" }, { "key": "type", "label": "النوع" }, { "key": "createdBy", "label": "أنشأه" }, { "key": "lastRun", "label": "آخر تشغيل" }, { "key": "status", "label": "الحالة", "type": "status" }],
+        "rows": [
+          { "id": "rs-1", "name": "سجل الأصول حسب الإدارة", "type": "سجل أصول", "createdBy": "محمد عبدالله", "lastRun": "12 نوفمبر 2026", "status": "جاهز" },
+          { "id": "rs-2", "name": "نتائج جرد المقر الرئيسي", "type": "جرد", "createdBy": "سارة أحمد", "lastRun": "31 أكتوبر 2026", "status": "جاهز" }
+        ],
+        "rowActionLabel": "تشغيل التقرير",
+        "rowActionMessage": "تم تشغيل التقرير في وضع المعاينة فقط."
+      }
+    }
+  },
+  "notifications": {
+    "title": "مركز التنبيهات",
+    "eyebrow": "التنبيهات والمهام",
+    "description": "تابع طلبات النقل والجرد والتغييرات التي تحتاج إلى إجراء.",
+    "icon": "bell",
+    "actionLabel": "تحديد الكل كمقروء",
+    "stats": [
+      { "label": "غير مقروءة", "value": "3", "tone": "orange", "icon": "bell" },
+      { "label": "إجمالي هذا الأسبوع", "value": "14", "tone": "blue", "icon": "clock" }
+    ],
+    "tabs": [{ "id": "unread", "label": "غير مقروء" }, { "id": "all", "label": "كل التنبيهات" }],
+    "datasets": {
+      "unread": {
+        "columns": [{ "key": "title", "label": "التنبيه" }, { "key": "description", "label": "التفاصيل" }, { "key": "createdAt", "label": "وقت الإرسال" }, { "key": "status", "label": "الحالة", "type": "status" }],
+        "rows": [
+          { "id": "n-1", "title": "طلب نقل عهدة جديد", "description": "طابعة HP LaserJet · من تقنية المعلومات إلى الموارد البشرية", "createdAt": "منذ 15 دقيقة", "status": "جديد" },
+          { "id": "n-2", "title": "فروقات في حملة الجرد", "description": "المقر الرئيسي · 3 أصول تحتاج إلى مراجعة", "createdAt": "منذ ساعة", "status": "جديد" },
+          { "id": "n-3", "title": "طلب تخريد بانتظار الاعتماد", "description": "وحدة تكييف Carrier · المشتريات", "createdAt": "أمس", "status": "جديد" }
+        ],
+        "rowActionLabel": "تحديد كمقروء",
+        "rowActionStatus": "مقروء",
+        "rowActionMessage": "تم تحديث التنبيه في الجلسة التجريبية.",
+        "bulkActionLabel": "تحديد الكل كمقروء",
+        "bulkActionMessage": "تم تحديد التنبيهات المعروضة كمقروءة في الجلسة التجريبية."
+      },
+      "all": {
+        "columns": [{ "key": "title", "label": "التنبيه" }, { "key": "description", "label": "التفاصيل" }, { "key": "createdAt", "label": "وقت الإرسال" }, { "key": "status", "label": "الحالة", "type": "status" }],
+        "rows": [
+          { "id": "n-1", "title": "طلب نقل عهدة جديد", "description": "طابعة HP LaserJet · من تقنية المعلومات إلى الموارد البشرية", "createdAt": "منذ 15 دقيقة", "status": "جديد" },
+          { "id": "n-2", "title": "فروقات في حملة الجرد", "description": "المقر الرئيسي · 3 أصول تحتاج إلى مراجعة", "createdAt": "منذ ساعة", "status": "جديد" },
+          { "id": "n-3", "title": "طلب تخريد بانتظار الاعتماد", "description": "وحدة تكييف Carrier · المشتريات", "createdAt": "أمس", "status": "جديد" },
+          { "id": "n-4", "title": "تم اكتمال نقل عهدة", "description": "حاسب محمول Lenovo ThinkPad E14", "createdAt": "منذ يومين", "status": "مقروء" }
+        ],
+        "rowActionLabel": "تحديد كمقروء",
+        "rowActionStatus": "مقروء",
+        "rowActionMessage": "تم تحديث التنبيه في الجلسة التجريبية.",
+        "bulkActionLabel": "تحديد الكل كمقروء",
+        "bulkActionMessage": "تم تحديد التنبيهات المعروضة كمقروءة في الجلسة التجريبية."
+      }
+    }
+  },
+  "employees": {
+    "title": "الموظفون والإدارات",
+    "eyebrow": "الدليل التنظيمي",
+    "description": "إدارة بيانات الموظفين ومسؤولي العهد والإدارات.",
+    "icon": "users",
+    "actionLabel": "إضافة موظف",
+    "stats": [
+      { "label": "موظفون نشطون", "value": "186", "tone": "blue", "icon": "users" },
+      { "label": "إدارات", "value": "12", "tone": "purple", "icon": "layers" },
+      { "label": "عهد فردية", "value": "1224", "tone": "green", "icon": "box" }
+    ],
+    "tabs": [{ "id": "employees", "label": "الموظفون" }, { "id": "departments", "label": "الإدارات" }],
+    "datasets": {
+      "employees": {
+        "columns": [{ "key": "name", "label": "الموظف" }, { "key": "employeeNumber", "label": "الرقم الوظيفي" }, { "key": "department", "label": "الإدارة" }, { "key": "custodyCount", "label": "أصول بعهدته" }, { "key": "status", "label": "الحالة", "type": "status" }],
+        "rows": [
+          { "id": "e-1", "name": "أحمد محمود", "employeeNumber": "EMP-0104", "department": "تقنية المعلومات", "custodyCount": "12", "status": "نشط" },
+          { "id": "e-2", "name": "مريم حسن", "employeeNumber": "EMP-0088", "department": "الموارد البشرية", "custodyCount": "7", "status": "نشط" },
+          { "id": "e-3", "name": "خالد علي", "employeeNumber": "EMP-0037", "department": "الخدمات العامة", "custodyCount": "19", "status": "نشط" }
+        ],
+        "rowActionLabel": "عرض العهدة",
+        "rowActionMessage": "ملف الموظف وعهدته معروضان تجريبيًا.",
+        "formFields": [
+          { "name": "name", "label": "اسم الموظف", "type": "text", "required": true },
+          { "name": "employeeNumber", "label": "الرقم الوظيفي", "type": "text", "required": true },
+          { "name": "department", "label": "الإدارة", "type": "text", "required": true },
+          { "name": "email", "label": "البريد الإلكتروني", "type": "email" }
+        ]
+      },
+      "departments": {
+        "columns": [{ "key": "name", "label": "الإدارة" }, { "key": "code", "label": "الكود" }, { "key": "manager", "label": "المدير" }, { "key": "employeeCount", "label": "عدد الموظفين" }, { "key": "assetCount", "label": "الأصول" }],
+        "rows": [
+          { "id": "d-1", "name": "تقنية المعلومات", "code": "IT", "manager": "أحمد محمود", "employeeCount": "24", "assetCount": "684" },
+          { "id": "d-2", "name": "الموارد البشرية", "code": "HR", "manager": "مريم حسن", "employeeCount": "18", "assetCount": "126" },
+          { "id": "d-3", "name": "الخدمات العامة", "code": "GA", "manager": "خالد علي", "employeeCount": "31", "assetCount": "296" }
+        ],
+        "rowActionLabel": "عرض الإدارة",
+        "rowActionMessage": "تفاصيل الإدارة والعهدة العامة تجريبية.",
+        "formFields": [
+          { "name": "name", "label": "اسم الإدارة", "type": "text", "required": true },
+          { "name": "code", "label": "كود الإدارة", "type": "text", "required": true },
+          { "name": "manager", "label": "مدير الإدارة", "type": "text" }
+        ]
+      }
+    }
+  },
+  "settings": {
+    "title": "الإعدادات والإدارة",
+    "eyebrow": "إدارة النظام",
+    "description": "البيانات المرجعية والمستخدمون وسجلات النظام وأدوات الإدارة.",
+    "icon": "settings",
+    "actionLabel": "إضافة سجل",
+    "stats": [
+      { "label": "مستخدمون نشطون", "value": "24", "tone": "blue", "icon": "users" },
+      { "label": "صلاحيات مؤقتة", "value": "3", "tone": "orange", "icon": "clock" },
+      { "label": "آخر نسخة احتياطية", "value": "اليوم", "tone": "green", "icon": "archive" }
+    ],
+    "tabs": [
+      { "id": "categories", "label": "الفئات" },
+      { "id": "locations", "label": "المواقع" },
+      { "id": "suppliers", "label": "الموردون" },
+      { "id": "users", "label": "المستخدمون" },
+      { "id": "permissions", "label": "الصلاحيات المؤقتة" },
+      { "id": "audit", "label": "سجل التدقيق" },
+      { "id": "backups", "label": "النسخ الاحتياطي" },
+      { "id": "imports", "label": "استيراد Excel" },
+      { "id": "system", "label": "إعدادات النظام" }
+    ],
+    "datasets": {
+      "categories": {
+        "columns": [{ "key": "name", "label": "الفئة" }, { "key": "code", "label": "الكود" }, { "key": "assetCount", "label": "عدد الأصول" }, { "key": "status", "label": "الحالة", "type": "status" }],
+        "rows": [
+          { "id": "cat-1", "name": "أجهزة الحاسب الآلي", "code": "IT", "assetCount": "684", "status": "نشط" },
+          { "id": "cat-2", "name": "أثاث مكتبي", "code": "OFF", "assetCount": "552", "status": "نشط" },
+          { "id": "cat-3", "name": "مركبات", "code": "VEH", "assetCount": "296", "status": "نشط" }
+        ],
+        "rowActionLabel": "تعديل",
+        "rowActionMessage": "إدارة البيانات المرجعية تجريبية.",
+        "formFields": [{ "name": "name", "label": "اسم الفئة", "type": "text", "required": true }, { "name": "code", "label": "الكود", "type": "text", "required": true }]
+      },
+      "locations": {
+        "columns": [{ "key": "name", "label": "الموقع" }, { "key": "code", "label": "الكود" }, { "key": "parent", "label": "الموقع الأعلى" }, { "key": "assetCount", "label": "عدد الأصول" }, { "key": "status", "label": "الحالة", "type": "status" }],
+        "rows": [
+          { "id": "loc-1", "name": "المبنى الرئيسي · الطابق الثاني", "code": "HQ-02", "parent": "المبنى الرئيسي", "assetCount": "241", "status": "نشط" },
+          { "id": "loc-2", "name": "المخزن الرئيسي", "code": "WH-01", "parent": "المقر الرئيسي", "assetCount": "194", "status": "نشط" }
+        ],
+        "rowActionLabel": "تعديل",
+        "rowActionMessage": "إدارة المواقع تجريبية.",
+        "formFields": [{ "name": "name", "label": "اسم الموقع", "type": "text", "required": true }, { "name": "code", "label": "الكود", "type": "text", "required": true }, { "name": "parent", "label": "الموقع الأعلى", "type": "text" }]
+      },
+      "suppliers": {
+        "columns": [{ "key": "name", "label": "المورد" }, { "key": "contact", "label": "جهة الاتصال" }, { "key": "phone", "label": "الهاتف" }, { "key": "assetCount", "label": "توريدات مسجلة" }, { "key": "status", "label": "الحالة", "type": "status" }],
+        "rows": [
+          { "id": "sup-1", "name": "شركة النظم الحديثة", "contact": "قسم المبيعات", "phone": "02-23456789", "assetCount": "86", "status": "نشط" },
+          { "id": "sup-2", "name": "المتحدة للتجهيزات", "contact": "خدمة العملاء", "phone": "02-22334455", "assetCount": "42", "status": "نشط" }
+        ],
+        "rowActionLabel": "تعديل",
+        "rowActionMessage": "سجل الموردين تجريبي.",
+        "formFields": [{ "name": "name", "label": "اسم المورد", "type": "text", "required": true }, { "name": "contact", "label": "جهة الاتصال", "type": "text" }, { "name": "phone", "label": "الهاتف", "type": "tel" }]
+      },
+      "users": {
+        "columns": [{ "key": "name", "label": "المستخدم" }, { "key": "email", "label": "البريد الإلكتروني" }, { "key": "role", "label": "الدور" }, { "key": "lastLogin", "label": "آخر دخول" }, { "key": "status", "label": "الحالة", "type": "status" }],
+        "rows": [
+          { "id": "u-1", "name": "محمد عبدالله", "email": "m.abdullah@example.test", "role": "مدير النظام", "lastLogin": "اليوم، 9:22 ص", "status": "نشط" },
+          { "id": "u-2", "name": "سارة أحمد", "email": "s.ahmed@example.test", "role": "مدير أصول", "lastLogin": "أمس، 4:10 م", "status": "نشط" },
+          { "id": "u-3", "name": "خالد علي", "email": "k.ali@example.test", "role": "مدقق", "lastLogin": "11 نوفمبر 2026", "status": "نشط" }
+        ],
+        "rowActionLabel": "إدارة المستخدم",
+        "rowActionMessage": "إدارة الحسابات والصلاحيات تتطلب واجهة API ومصادقة.",
+        "formFields": [{ "name": "name", "label": "اسم المستخدم", "type": "text", "required": true }, { "name": "email", "label": "البريد الإلكتروني", "type": "email", "required": true }, { "name": "role", "label": "الدور", "type": "select", "required": true, "options": ["مدير أصول", "مدقق", "مشاهد"] }]
+      },
+      "permissions": {
+        "columns": [{ "key": "user", "label": "المستخدم" }, { "key": "permission", "label": "الصلاحية" }, { "key": "scope", "label": "النطاق" }, { "key": "expiresAt", "label": "تنتهي في" }, { "key": "status", "label": "الحالة", "type": "status" }],
+        "rows": [
+          { "id": "p-1", "user": "سارة أحمد", "permission": "اعتماد نقل عهدة", "scope": "الموارد البشرية", "expiresAt": "20 نوفمبر 2026", "status": "نشط" },
+          { "id": "p-2", "user": "خالد علي", "permission": "مراجعة نتائج الجرد", "scope": "المقر الرئيسي", "expiresAt": "25 نوفمبر 2026", "status": "نشط" }
+        ],
+        "rowActionLabel": "إلغاء التفويض",
+        "rowActionStatus": "ملغى",
+        "rowActionMessage": "تم تحديث التفويض في الجلسة التجريبية.",
+        "formFields": [{ "name": "user", "label": "المستخدم", "type": "text", "required": true }, { "name": "permission", "label": "الصلاحية", "type": "text", "required": true }, { "name": "expiresAt", "label": "تاريخ الانتهاء", "type": "date", "required": true }]
+      },
+      "audit": {
+        "columns": [{ "key": "actor", "label": "المستخدم" }, { "key": "action", "label": "الإجراء" }, { "key": "resource", "label": "السجل" }, { "key": "date", "label": "التاريخ والوقت" }, { "key": "result", "label": "النتيجة", "type": "status" }],
+        "rows": [
+          { "id": "au-1", "actor": "محمد عبدالله", "action": "تحديث بيانات أصل", "resource": "AST-000161 · مركبة", "date": "13 نوفمبر 2026 · 9:22 ص", "result": "ناجح" },
+          { "id": "au-2", "actor": "سارة أحمد", "action": "طلب نقل عهدة", "resource": "AST-000149 · طابعة", "date": "12 نوفمبر 2026 · 4:10 م", "result": "ناجح" },
+          { "id": "au-3", "actor": "خالد علي", "action": "تسجيل نتيجة جرد", "resource": "حملة المقر الرئيسي", "date": "12 نوفمبر 2026 · 1:45 م", "result": "ناجح" }
+        ],
+        "rowActionLabel": "عرض التفاصيل",
+        "rowActionMessage": "سجل التدقيق للعرض فقط ولا يمكن تعديله."
+      },
+      "backups": {
+        "columns": [{ "key": "name", "label": "النسخة" }, { "key": "createdAt", "label": "تاريخ الإنشاء" }, { "key": "size", "label": "الحجم" }, { "key": "createdBy", "label": "أنشأها" }, { "key": "status", "label": "الحالة", "type": "status" }],
+        "rows": [
+          { "id": "bk-1", "name": "نسخة أسبوعية · 13 نوفمبر", "createdAt": "اليوم، 10:00 م", "size": "248 م.ب", "createdBy": "النظام", "status": "مكتمل" },
+          { "id": "bk-2", "name": "نسخة أسبوعية · 6 نوفمبر", "createdAt": "6 نوفمبر 2026", "size": "244 م.ب", "createdBy": "النظام", "status": "مكتمل" }
+        ],
+        "rowActionLabel": "استعادة",
+        "rowActionMessage": "الاستعادة غير متاحة دون خدمة النسخ الاحتياطي.",
+        "formFields": [{ "name": "name", "label": "وصف النسخة", "type": "text", "required": true }]
+      },
+      "imports": {
+        "columns": [{ "key": "file", "label": "الملف" }, { "key": "importedBy", "label": "المستخدم" }, { "key": "date", "label": "تاريخ الاستيراد" }, { "key": "records", "label": "السجلات" }, { "key": "status", "label": "النتيجة", "type": "status" }],
+        "rows": [
+          { "id": "im-1", "file": "أصول_المقر_الرئيسي.xlsx", "importedBy": "محمد عبدالله", "date": "10 نوفمبر 2026", "records": "124 · 118 ناجح", "status": "مكتمل جزئيًا" },
+          { "id": "im-2", "file": "موظفو_الإدارات.xlsx", "importedBy": "سارة أحمد", "date": "4 نوفمبر 2026", "records": "86 · 86 ناجح", "status": "مكتمل" }
+        ],
+        "rowActionLabel": "عرض سجل الأخطاء",
+        "rowActionMessage": "تحليل الملفات وتسجيل الأخطاء سيتاحان بعد ربط خدمة الاستيراد.",
+        "formFields": [{ "name": "file", "label": "ملف Excel", "type": "text", "required": true, "placeholder": "اختر ملفًا بعد تجهيز خدمة الاستيراد" }]
+      },
+      "system": {
+        "columns": [{ "key": "setting", "label": "الإعداد" }, { "key": "value", "label": "القيمة الحالية" }, { "key": "updatedBy", "label": "آخر تحديث" }, { "key": "status", "label": "الحالة", "type": "status" }],
+        "rows": [
+          { "id": "st-1", "setting": "المنطقة الزمنية", "value": "Africa/Cairo", "updatedBy": "مدير النظام · 10 نوفمبر", "status": "نشط" },
+          { "id": "st-2", "setting": "لغة الواجهة", "value": "العربية (RTL)", "updatedBy": "مدير النظام · 10 نوفمبر", "status": "نشط" },
+          { "id": "st-3", "setting": "مدة الجلسة", "value": "غير محددة · بانتظار المصادقة", "updatedBy": "—", "status": "قيد الإعداد" }
+        ],
+        "rowActionLabel": "تعديل الإعداد",
+        "rowActionMessage": "إعدادات النظام متاحة للعرض فقط في النموذج التجريبي."
+      }
+    }
+  }
+}
